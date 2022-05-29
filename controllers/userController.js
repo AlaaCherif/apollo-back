@@ -6,3 +6,4 @@ export const getUsers = (req, res) => {
     res.status(200).send(snapshot.val());
   });
 };
+export const getUser = (req, res) => {};

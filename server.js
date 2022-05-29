@@ -1,19 +1,16 @@
 import app from './app.js';
-import { initializeApp } from 'firebase/app';
-import { getDatabase, onValue, ref, get } from 'firebase/database';
-const firebaseConfig = {
-  apiKey: 'AIzaSyASFfCH0LsOGVD_-BLKyp4N2brKC1ISoAA',
-  authDomain: 'apollo-4d7c6.firebaseapp.com',
-  databaseURL: 'https://apollo-4d7c6-default-rtdb.firebaseio.com',
-  projectId: 'apollo-4d7c6',
-  storageBucket: 'apollo-4d7c6.appspot.com',
-  messagingSenderId: '391241832904',
-  appId: '1:391241832904:web:270f73c19d56c256c108fd',
-  measurementId: 'G-KWZ5TC04NZ',
-};
 
-const firebaseApp = initializeApp(firebaseConfig);
-const database = getDatabase();
+import { initializeApp, applicationDefault } from 'firebase-admin/app';
+import { getDatabase } from 'firebase-admin/database';
+import { getAuth } from 'firebase-admin/auth';
+
+const defaultApp = initializeApp({
+  credential: applicationDefault(),
+  databaseURL: 'https://apollo-4d7c6-default-rtdb.firebaseio.com/',
+});
+const database = getDatabase(defaultApp);
+export const auth = getAuth(defaultApp);
+
 export default database;
 
 // Initialize Firebase
